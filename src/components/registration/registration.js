@@ -9,11 +9,15 @@ function RegistrationForm() {
     event.preventDefault()
     console.log(inputs)
     axios
-      .post('/registration', inputs, {
-        headers: {
-          'content-type': 'application/json',
-        },
-      })
+      .post(
+        'https://ljlf3qcpoa.execute-api.eu-central-1.amazonaws.com/dev/user/registration',
+        inputs,
+        {
+          headers: {
+            'content-type': 'application/json',
+          },
+        }
+      )
       .then(function (response) {
         console.log(response)
       })
