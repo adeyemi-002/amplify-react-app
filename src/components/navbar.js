@@ -1,11 +1,14 @@
-import './navbar.css'
+import { Link } from "react-router-dom";
+import "./navbar.css";
 
 function NavBar() {
- return (
-   <div id="topnav">
-    <a href="#https://reactjs.org" id="nav-link">Sign In ?</a>
-   </div>
- );
+  return (
+    <div id="topnav">
+      <Link to="/signin/signin.js" className="pages">
+        Sign In
+      </Link>
+    </div>
+  );
 }
 
 export default NavBar;
