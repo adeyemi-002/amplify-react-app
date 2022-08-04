@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './registration.css'
 import { Formik, Form, Field } from 'formik'
+import axios from 'axios'
 
 function RegistrationForm() {
   const [inputs, setInputs] = useState({})
