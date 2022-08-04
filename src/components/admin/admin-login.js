@@ -36,7 +36,7 @@ function AdminLogin() {
     username: '',
     email: '',
     phone: '',
-    user_role: '',
+    userRole: '',
   }
 
   return (
@@ -139,8 +139,8 @@ function AdminLogin() {
                       <div className='input-container'>
                         <label htmlFor=''>User role</label>
                         <Field type='select' name='user_role' as='select'>
-                          <option value='tenant-Admin'>TenantAdmin</option>
-                          <option value='tenant-User'>TenantUser</option>
+                          <option value='TenantAdmin'>TenantAdmin</option>
+                          <option value='TenantUser'>TenantUser</option>
                         </Field>
                       </div>
                       <div id='btn-container'>
