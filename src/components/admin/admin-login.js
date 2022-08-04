@@ -40,6 +40,27 @@ function AdminLogin() {
     //    setIsTenantAdmin(true);
   }, [])
 
+  const handleUserActivateAndDeactivate = (user_name, action) => {
+    try {
+      axios.patch(
+        `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/AdminUserManagement/${action}/${user_name}`,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers':
+              'Access-Control-Allow-Headers, Content-Type, Authorization',
+            'Access-Control-Allow-Methods': '*',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('id_token')}`,
+          },
+        }
+      )
+      window.alert(action === 'enableuser' ? 'user enabled' : 'user disabed')
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   function handleSubmit(event) {
     event.preventDefault()
     console.log(inputs)
@@ -69,12 +90,24 @@ function AdminLogin() {
         <td>{d.enabled.toString()}</td>
         <td>{d.user_role}</td>
         <td>
-          <button type='reset' className='activate'>
+          <button
+            type='reset'
+            className='activate'
+            onClick={() =>
+              handleUserActivateAndDeactivate(d.user_name, 'enableuser')
+            }
+          >
             Activate
           </button>
         </td>
         <td>
-          <button type='reset' className='activate'>
+          <button
+            type='reset'
+            className='deactivate'
+            onClick={() =>
+              handleUserActivateAndDeactivate(d.user_nam, 'disableuser')
+            }
+          >
             Deactivate
           </button>
         </td>
