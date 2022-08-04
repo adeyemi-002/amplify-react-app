@@ -10,6 +10,7 @@ function AdminLogin() {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
+    setLoading(true)
     axios
       .get(
         `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/AdminUserManagement/getusers`,
@@ -27,9 +28,11 @@ function AdminLogin() {
       .then((response) => {
         console.log(response)
         setUsers(response.users)
+        setLoading(false)
       })
       .catch((err) => {
         console.error(err)
+        setLoading(false)
       })
     // console.log(hash);
     // console.log(token);
@@ -113,7 +116,7 @@ function AdminLogin() {
               </tr>
             </thead>
             <tbody>
-              {users.length > 0 ? tableBody : <tr> No data available</tr>}
+              {users?.length > 0 ? tableBody : <tr> No data available</tr>}
             </tbody>
           </table>
 

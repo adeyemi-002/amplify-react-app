@@ -22,6 +22,7 @@ function UserDashboard() {
     }
 
     console.log('tok', token)
+    setLoading(true)
 
     axios
       .get(
@@ -40,9 +41,11 @@ function UserDashboard() {
       .then((response) => {
         console.log(response)
         setData(response.data)
+        setLoading(false)
       })
       .catch((err) => {
         console.error(err)
+        setLoading(false)
       })
     // console.log(hash);
     // console.log(token);
