@@ -27,7 +27,7 @@ function AdminLogin() {
       )
       .then((response) => {
         console.log(response)
-        setUsers(response.users)
+        setUsers(response.data)
         setLoading(false)
       })
       .catch((err) => {
