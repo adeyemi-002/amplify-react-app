@@ -105,7 +105,7 @@ function AdminLogin() {
             type='reset'
             className='deactivate'
             onClick={() =>
-              handleUserActivateAndDeactivate(d.user_nam, 'disableuser')
+              handleUserActivateAndDeactivate(d.user_name, 'disableuser')
             }
           >
             Deactivate
