@@ -32,7 +32,7 @@ function SignInForm() {
             // alert(JSON.stringify(values, null, 2));
             setSubmitting(false);
           }, 700);
-          navigate("/userdashboard/user-dashboard.js");
+          navigate("/userdashboard/user-dashboard.jsZ");
         }}
       >
         {({ values, isSubmitting }) => (

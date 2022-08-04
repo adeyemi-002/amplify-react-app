@@ -46,10 +46,22 @@ i {
   justify-content: center;
   background-color: #fff;
 }
+td,
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
 
 #imgdash {
   width: 58%;
   padding: 30px;
+  display: flex;
+  justify-content: center;
 }
 
 img {
