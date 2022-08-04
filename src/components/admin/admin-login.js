@@ -33,7 +33,7 @@ function AdminLogin() {
 
   const [modalOpen, setModalOpen] = useState(false)
   const initialValues = {
-    username: '',
+    userName: '',
     email: '',
     phone: '',
     userRole: '',
@@ -119,7 +119,7 @@ function AdminLogin() {
                       <div className='input-container'>
                         <label htmlFor=''>Username</label>
                         <Field
-                          name='username'
+                          name='userName'
                           type='text'
                           placeholder='Username'
                         />
@@ -138,7 +138,7 @@ function AdminLogin() {
                       </div>
                       <div className='input-container'>
                         <label htmlFor=''>User role</label>
-                        <Field type='select' name='user_role' as='select'>
+                        <Field type='select' name='userRole' as='select'>
                           <option value='TenantAdmin'>TenantAdmin</option>
                           <option value='TenantUser'>TenantUser</option>
                         </Field>
