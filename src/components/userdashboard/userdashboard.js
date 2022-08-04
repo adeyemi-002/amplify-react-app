@@ -1,13 +1,14 @@
 import './userdashboard.css'
 import chart from '../images/chart.png'
-import { useState } from 'react'
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
 
 function UserDashboard() {
   const [isTenantAdmin, setIsTenantAdmin] = useState(false)
   const location = useLocation()
+  const [loading, setLoading] = useState(false)
+  const [data, setData] = useState([])
 
   useEffect(() => {
     console.log(location)
@@ -38,6 +39,7 @@ function UserDashboard() {
       )
       .then((response) => {
         console.log(response)
+        setData(response.data)
       })
       .catch((err) => {
         console.error(err)
@@ -47,6 +49,22 @@ function UserDashboard() {
 
     //    setIsTenantAdmin(true);
   }, [])
+
+  const tableBody = data?.map((d) =>
+    loading ? (
+      <tr>Loading Data...</tr>
+    ) : (
+      <tr key={d.week.S}>
+        <td>{d.week.S}</td>
+        <td>{d.flight.S}</td>
+        <td>{d.Bus.S}</td>
+        <td>{d.car.S}</td>
+        <td>{d.house.S}</td>
+        <td>{d.train.S}</td>
+        <td>{d.totalFootprint.S}</td>
+      </tr>
+    )
+  )
 
   return (
     <div className='cover'>
@@ -74,25 +92,11 @@ function UserDashboard() {
                 <th>Car</th>
                 <th>House</th>
                 <th>Train</th>
+                <th>TotalFootprint</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>20</td>
-                <td>10</td>
-                <td>5</td>
-                <td>50</td>
-                <td>35</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>10</td>
-                <td>15</td>
-                <td>25</td>
-                <td>50</td>
-                <td>30</td>
-              </tr>
+              {data.length > 0 ? tableBody : <tr> No data available</tr>}
             </tbody>
           </table>
           {/* <img src={chart} alt='bar chart' /> */}

@@ -1,25 +1,42 @@
 import { Form, Formik, Field } from 'formik'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './adminlogin.css'
 import axios from 'axios'
 
 function AdminLogin() {
   const [inputs, setInputs] = useState({})
+  const [loading, setLoading] = useState(false)
 
-  const [users, setUsers] = useState([
-    {
-      name: 'Jim',
-    },
-    {
-      name: 'Michael',
-    },
-    {
-      name: 'Pamela',
-    },
-    {
-      name: 'Kevin',
-    },
-  ])
+  const [users, setUsers] = useState([])
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/AdminUserManagement/getusers`,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers':
+              'Access-Control-Allow-Headers, Content-Type, Authorization',
+            'Access-Control-Allow-Methods': '*',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${localStorage.getItem('id_token')}`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response)
+        setUsers(response.users)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+    // console.log(hash);
+    // console.log(token);
+
+    //    setIsTenantAdmin(true);
+  }, [])
+
   function handleSubmit(event) {
     event.preventDefault()
     console.log(inputs)
@@ -38,6 +55,29 @@ function AdminLogin() {
     phone: '',
     userRole: '',
   }
+
+  const tableBody = users?.map((d, i) =>
+    loading ? (
+      <tr>Loading Data...</tr>
+    ) : (
+      <tr key={i}>
+        <td>{d.user_name}</td>
+        <td>{d.email}</td>
+        <td>{d.enabled.toString()}</td>
+        <td>{d.user_role}</td>
+        <td>
+          <button type='reset' className='activate'>
+            Activate
+          </button>
+        </td>
+        <td>
+          <button type='reset' className='activate'>
+            Deactivate
+          </button>
+        </td>
+      </tr>
+    )
+  )
 
   return (
     <div className='Adm'>
@@ -61,34 +101,28 @@ function AdminLogin() {
         </div>
         <br></br>
         <div id='container'>
-          <form action='' onSubmit={handleSubmit} id=''>
-            {users.map((user, index) => (
-              <div className='details' key={index}>
-                <input
-                  type='text'
-                  name='userone'
-                  value={user.name}
-                  onChange={handleChange}
-                  className='form-elect-inputa'
-                  placeholder='user_1'
-                />
-                <button type='reset' className='activate'>
-                  Activate
-                </button>
-                <button type='reset' className='col-left'>
-                  Deactivate
-                </button>
-                <i className='fa fa-trash trashio'></i>
-                <br></br>
-              </div>
-            ))}
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>email</th>
+                <th>enabled</th>
+                <th>userRole</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.length > 0 ? tableBody : <tr> No data available</tr>}
+            </tbody>
+          </table>
 
-            <div id='btn'>
-              <button onClick={() => setModalOpen(true)} id='btnreg'>
-                Add New User
-              </button>
-            </div>
-          </form>
+          <div id='btn'>
+            <button onClick={() => setModalOpen(true)} id='btnreg'>
+              Add New User
+            </button>
+          </div>
+
           {modalOpen && (
             <div id='modal'>
               <Formik
