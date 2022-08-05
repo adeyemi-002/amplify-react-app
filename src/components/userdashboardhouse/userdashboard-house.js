@@ -64,8 +64,7 @@ function HouseDashboard() {
               <input
                 type='number'
                 name='kwh'
-                value={(houseData.kwh = '0.38')}
-                onChange={handleChange}
+                value={'0.38'}
                 className='form-elect-input'
                 readonly='readonly'
               />

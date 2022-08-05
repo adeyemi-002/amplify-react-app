@@ -120,7 +120,7 @@ function UserDashboard() {
           </label>
           &nbsp;
           <input
-            type='number'
+            type='text'
             name='week'
             value={week.week}
             onChange={handleChange}
