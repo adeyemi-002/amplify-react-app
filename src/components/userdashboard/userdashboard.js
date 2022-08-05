@@ -34,7 +34,9 @@ function UserDashboard() {
               'Access-Control-Allow-Headers, Content-Type, Authorization',
             'Access-Control-Allow-Methods': '*',
             'Content-Type': 'application/json',
-            Authorization: `Bearer ${token || localStorage.getItem(id_token)}`,
+            Authorization: `Bearer ${
+              token || localStorage.getItem('id_token')
+            }`,
           },
         }
       )
