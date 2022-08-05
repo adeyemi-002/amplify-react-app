@@ -9,6 +9,7 @@ function UserDashboard() {
   const location = useLocation()
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
+  const [week, setWeek] = useState({})
 
   function handleChange(event) {
     const value = event.target.value
