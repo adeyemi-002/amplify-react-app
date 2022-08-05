@@ -10,6 +10,11 @@ function UserDashboard() {
   const [loading, setLoading] = useState(false)
   const [data, setData] = useState([])
 
+  function handleChange(event) {
+    const value = event.target.value
+    localStorage.setItem('week', JSON.stringify(value))
+  }
+
   useEffect(() => {
     console.log(location)
     const hash = location.hash
@@ -107,6 +112,21 @@ function UserDashboard() {
           {/* <img src={chart} alt='bar chart' /> */}
           {/*<img src={logo} className="App-logo" alt="logo" />*/}
         </div>
+
+        <div>
+          <label htmlFor='week' className=''>
+            Week
+          </label>
+          &nbsp;
+          <input
+            type='number'
+            name='week'
+            value={week.week}
+            onChange={handleChange}
+            className='form-input'
+          />
+        </div>
+
         <button>
           {' '}
           <Link to='/userdashboardairplane/user-dasboard-airplane.js'>
