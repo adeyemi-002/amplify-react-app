@@ -209,7 +209,9 @@ function AdminLogin() {
                       <div className='input-container'>
                         <label htmlFor=''>User role</label>
                         <Field type='select' name='userRole' as='select'>
-                          <option value='TenantAdmin'>TenantAdmin</option>
+                          <option selected value='TenantAdmin'>
+                            TenantAdmin
+                          </option>
                           <option value='TenantUser'>TenantUser</option>
                         </Field>
                       </div>
