@@ -24,7 +24,7 @@ function TrainDashboard() {
     try {
       axios
         .post(
-          `ahttps://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/createfootprint`,
+          `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/createfootprint`,
           travelData,
           {
             headers: {
