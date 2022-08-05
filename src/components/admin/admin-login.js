@@ -77,7 +77,7 @@ function AdminLogin() {
     userName: '',
     email: '',
     phone: '',
-    userRole: '',
+    userRole: 'TenantAdmin',
   }
 
   const tableBody = users?.map((d, i) =>
@@ -209,9 +209,7 @@ function AdminLogin() {
                       <div className='input-container'>
                         <label htmlFor=''>User role</label>
                         <Field type='select' name='userRole' as='select'>
-                          <option selected value='TenantAdmin'>
-                            TenantAdmin
-                          </option>
+                          <option value='TenantAdmin'>TenantAdmin</option>
                           <option value='TenantUser'>TenantUser</option>
                         </Field>
                       </div>
