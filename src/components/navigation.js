@@ -97,28 +97,27 @@ function Navigation() {
                 path='/userdashboard/user-dashboard.js'
                 element={<UserDashboard />}
               />
-              {/*
-								<Route
-								path='/userdashboardairplane/user-dasboard-airplane.js'
-								element={<AirplaneDashboard />}
-							/>
-							<Route
-								path='/userdashboardbus/user-dashboard-bus.js'
-								element={<BusDashboard />}
-							/>
-							<Route
-								path='/userdashboardcar/user-dasboard-car.js'
-								element={<CarDashboard />}
-							/>
-							<Route
-								path='/userdashboardhouse/user-dasboard-house.js'
-								element={<HouseDashboard />}
-							/>
-							<Route
-								path='/userdashboardtrain/user-dasboard-train.js'
-								element={<TrainDashboard />}
-							/>
-					*/}
+
+              <Route
+                path='/userdashboardairplane/user-dasboard-airplane.js'
+                element={<AirplaneDashboard />}
+              />
+              <Route
+                path='/userdashboardbus/user-dashboard-bus.js'
+                element={<BusDashboard />}
+              />
+              <Route
+                path='/userdashboardcar/user-dasboard-car.js'
+                element={<CarDashboard />}
+              />
+              <Route
+                path='/userdashboardhouse/user-dasboard-house.js'
+                element={<HouseDashboard />}
+              />
+              <Route
+                path='/userdashboardtrain/user-dasboard-train.js'
+                element={<TrainDashboard />}
+              />
             </Routes>
           </div>
         </div>
