@@ -96,22 +96,7 @@ function TrainDashboard() {
               </label>
               <br></br>
             </div>
-
-            <div id='btn'>
-              <button type='reset' id='reset'>
-                Cancel
-              </button>
-              <button type='submit' id='calc'>
-                Back
-              </button>
-            </div>
           </form>
-        </div>
-
-        <div id='winclose'>
-          <button type='submit' name='close' id='btnclose'>
-            <i className='fa fa-times-circle-o'></i>
-          </button>
         </div>
       </div>
     </div>

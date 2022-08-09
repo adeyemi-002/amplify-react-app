@@ -54,20 +54,7 @@ function AirplaneDashboard() {
             </label>
             <br></br>
           </div>
-
-          <div id='btn'>
-            <button type='reset' id='reset'></button>
-            <button type='submit' id='calc'>
-              <Link to='/userdashboardbus/user-dashboard-bus.js'>Next</Link>
-            </button>
-          </div>
         </form>
-      </div>
-
-      <div id='winclose'>
-        <button type='submit' name='close' id='btnclose'>
-          <i className='fa fa-times-circle-o'></i>
-        </button>
       </div>
     </div>
   )

@@ -15,32 +15,34 @@ import NavBar from './navbar'
 import { Formik, Form, Field } from 'formik'
 
 function Navigation() {
-	const loggedIn = localStorage.getItem('loggedIn')
+  const loggedIn = localStorage.getItem('loggedIn')
 
-	return (
-		<div>
-			<Router basename='/' id='container'>
-				<NavBar />
-				<div id='links'>
-					{loggedIn ? (
-						<div>
-							<Link to='/home/home.js' className='pages'>
-								Home
-							</Link>
-							<Link to='/registration/registration.js' className='pages'>
-								Registration
-							</Link>
-							<Link to='/admin/admin-login.js' className='pages'>
-								Admin
-							</Link>
-							{/*
+  return (
+    <div>
+      <Router basename='/' id='container'>
+        <NavBar />
+        <div id='links'>
+          {loggedIn ? (
+            <div>
+              <Link to='/home/home.js' className='pages'>
+                Home
+              </Link>
+              <Link to='/registration/registration.js' className='pages'>
+                Registration
+              </Link>
+              <Link to='/admin/admin-login.js' className='pages'>
+                Admin
+              </Link>
+              {/*
 					<Link to='/adminconsole/admin-console.js' className='pages'>
 						Adminconsole
 					</Link>
 					*/}
-							<Link to='/userdashboard/user-dashboard.js' className='pages'>
-								Userdashboard
-							</Link>
+              <Link to='/userdashboard/user-dashboard.js' className='pages'>
+                Userdashboard
+              </Link>
+
+              {/*
 							<Link
 								to='/userdashboardairplane/user-dasboard-airplane.js'
 								className='pages'
@@ -71,30 +73,32 @@ function Navigation() {
 							>
 								UserdashTrain
 							</Link>
-						</div>
-					) : (
-						<div></div>
-					)}
+				*/}
+            </div>
+          ) : (
+            <div></div>
+          )}
 
-					<div>
-						<Routes>
-							<Route path='/' element={<Home />} />
-							<Route path='/home/home.js' element={<Home />} />
-							<Route
-								path='/registration/registration.js'
-								element={<Registration />}
-							/>
-							<Route path='/signin/signin.js' element={<SignIn />} />
-							<Route path='/admin/admin-login.js' element={<AdminLogin />} />
-							<Route
-								path='/adminconsole/admin-console.js'
-								element={<AdminConsole />}
-							/>
-							<Route
-								path='/userdashboard/user-dashboard.js'
-								element={<UserDashboard />}
-							/>
-							<Route
+          <div>
+            <Routes>
+              <Route path='/' element={<Home />} />
+              <Route path='/home/home.js' element={<Home />} />
+              <Route
+                path='/registration/registration.js'
+                element={<Registration />}
+              />
+              <Route path='/signin/signin.js' element={<SignIn />} />
+              <Route path='/admin/admin-login.js' element={<AdminLogin />} />
+              <Route
+                path='/adminconsole/admin-console.js'
+                element={<AdminConsole />}
+              />
+              <Route
+                path='/userdashboard/user-dashboard.js'
+                element={<UserDashboard />}
+              />
+              {/*
+								<Route
 								path='/userdashboardairplane/user-dasboard-airplane.js'
 								element={<AirplaneDashboard />}
 							/>
@@ -114,12 +118,13 @@ function Navigation() {
 								path='/userdashboardtrain/user-dasboard-train.js'
 								element={<TrainDashboard />}
 							/>
-						</Routes>
-					</div>
-				</div>
-			</Router>
-		</div>
-	)
+					*/}
+            </Routes>
+          </div>
+        </div>
+      </Router>
+    </div>
+  )
 }
 
 export default Navigation

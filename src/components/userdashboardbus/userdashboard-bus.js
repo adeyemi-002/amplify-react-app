@@ -57,24 +57,7 @@ function BusDashboard() {
               </label>
               <br></br>
             </div>
-
-            <div id='btn'>
-              <button type='reset' id='reset'></button>
-              <button type='submit' id='calc' onClick={() => handleBack()}>
-                {' '}
-                Back
-              </button>
-              <button type='submit' id='calc'>
-                <Link to='/userdashboardcar/user-dasboard-car.js'>Next</Link>
-              </button>
-            </div>
           </form>
-        </div>
-
-        <div id='winclose'>
-          <button type='submit' name='close' id='btnclose'>
-            <i className='fa fa-times-circle-o'></i>
-          </button>
         </div>
       </div>
     </div>
