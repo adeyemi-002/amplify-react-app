@@ -8,7 +8,8 @@ function TrainDashboard() {
   const navigate = useNavigate()
   const [trainData, setTrainData] = useState({})
 
-  function handleSubmit(event) {
+  {
+    /*function handleSubmit(event) {
     event.preventDefault()
     localStorage.setItem('trainData', JSON.stringify(trainData))
 
@@ -47,6 +48,7 @@ function TrainDashboard() {
     } catch (error) {
       console.error(error)
     }
+  }*/
   }
 
   function handleChange(event) {

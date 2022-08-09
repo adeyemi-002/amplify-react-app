@@ -31,34 +31,31 @@ function UserDashboard() {
     console.log('tok', token)
     setLoading(true)
     {
-      /*
-    axios
-      .get(
-        `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/getallfootprints`,
-        {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers':
-              'Access-Control-Allow-Headers, Content-Type, Authorization',
-            'Access-Control-Allow-Methods': '*',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${
-              token || localStorage.getItem('id_token')
-            }`,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response)
-        setData(response.data)
-        setLoading(false)
-      })
-      .catch((err) => {
-        console.error(err)
-        setLoading(false)
-      })
-
-    */
+      axios
+        .get(
+          `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/getallfootprints`,
+          {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Headers':
+                'Access-Control-Allow-Headers, Content-Type, Authorization',
+              'Access-Control-Allow-Methods': '*',
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${
+                token || localStorage.getItem('id_token')
+              }`,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response)
+          setData(response.data)
+          setLoading(false)
+        })
+        .catch((err) => {
+          console.error(err)
+          setLoading(false)
+        })
     }
     // console.log(hash);
     // console.log(token);
