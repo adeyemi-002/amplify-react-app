@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './userdashboard-airplane.css'
+import IconsNav from '../IconsNav'
 
 function AirplaneDashboard() {
   const navigate = useNavigate()
@@ -14,28 +15,25 @@ function AirplaneDashboard() {
     }
   }, [])
 
-  function handleSubmit(event) {
-    event.preventDefault()
-    localStorage.setItem('airplaneData', JSON.stringify(airplaneData))
+  {
+    /*function handleSubmit(event) {
+  event.preventDefault()
+  localStorage.setItem('airplaneData', JSON.stringify(airplaneData))
+}*/
   }
 
   function handleChange(event) {
     const name = event.target.name
     const value = event.target.value
     setAirplaneData((values) => ({ ...values, [name]: value }))
+    localStorage.setItem('airplaneData', JSON.stringify({ [name]: value || 0 }))
   }
   return (
     <div id='userplanedash'>
-      <div id='icons'>
-        <i className='fa fa-home iconcolor ifsize2'></i>
-        <i className='fa fa-car iconcolor ifsize'></i>
-        <i className='fa fa-bus iconcolor ifsize'></i>
-        <i className='fa fa-plane active iconcolore ifsize2'></i>
-        <i className='fa fa-train iconcolor ifsize'></i>
-      </div>
+      <IconsNav active='air' />
 
       <div id='datareg'>
-        <form action='' onSubmit={handleSubmit} id='powerdata'>
+        <form action='' id='powerdata'>
           <div className='details'></div>
 
           <div className='details'>
@@ -59,7 +57,7 @@ function AirplaneDashboard() {
 
           <div id='btn'>
             <button type='reset' id='reset'></button>
-            <button type='submit' id='calc' onClick={(e) => handleSubmit(e)}>
+            <button type='submit' id='calc'>
               <Link to='/userdashboardbus/user-dashboard-bus.js'>Next</Link>
             </button>
           </div>

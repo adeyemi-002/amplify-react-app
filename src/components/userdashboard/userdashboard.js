@@ -3,6 +3,7 @@ import chart from '../images/chart.png'
 import { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
+import IconsNav from '../IconsNav'
 
 function UserDashboard() {
   const [isTenantAdmin, setIsTenantAdmin] = useState(false)
@@ -29,7 +30,8 @@ function UserDashboard() {
 
     console.log('tok', token)
     setLoading(true)
-
+    {
+      /*
     axios
       .get(
         `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/getallfootprints`,
@@ -55,6 +57,9 @@ function UserDashboard() {
         console.error(err)
         setLoading(false)
       })
+
+    */
+    }
     // console.log(hash);
     // console.log(token);
 
@@ -86,13 +91,7 @@ function UserDashboard() {
       )}
 
       <div id='userdash'>
-        <div id='icons'>
-          <i className='fa fa-home fsizeh'></i>
-          <i className='fa fa-car fsize'></i>
-          <i className='fa fa-bus fsize'></i>
-          <i className='fa fa-plane fsize'></i>
-          <i className='fa fa-train fsize'></i>
-        </div>
+        <IconsNav />
         <div id='imgdash'>
           <table>
             <thead>

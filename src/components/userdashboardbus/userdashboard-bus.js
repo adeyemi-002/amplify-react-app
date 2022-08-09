@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './userdashboard-bus.css'
+import IconsNav from '../IconsNav'
 
 function BusDashboard() {
   const navigate = useNavigate()
@@ -13,9 +14,11 @@ function BusDashboard() {
     }
   }, [])
 
-  function handleSubmit(event) {
+  {
+    /*function handleSubmit(event) {
     event.preventDefault()
     localStorage.setItem('busData', JSON.stringify(busData))
+  }*/
   }
 
   function handleBack() {
@@ -26,21 +29,16 @@ function BusDashboard() {
     const name = event.target.name
     const value = event.target.value
     setBusData((values) => ({ ...values, [name]: value }))
+    localStorage.setItem('busData', JSON.stringify({ [name]: value || 0 }))
   }
 
   return (
     <div className='Usrb'>
       <div id='userbusdash'>
-        <div id='icons'>
-          <i className='fa fa-home iconcolor fsizeh'></i>
-          <i className='fa fa-car iconcolor fsize'></i>
-          <i className='fa fa-bus active iconcolor fsize'></i>
-          <i className='fa fa-plane iconcolor fsize'></i>
-          <i className='fa fa-train iconcolor fsize'></i>
-        </div>
+        <IconsNav active='bus' />
 
         <div id='datareg'>
-          <form action='' onSubmit={handleSubmit} id='powerdata'>
+          <form action='' id='powerdata'>
             <div id='elect'>
               <label htmlFor='elect' className=''>
                 Distance Travelled
@@ -66,7 +64,7 @@ function BusDashboard() {
                 {' '}
                 Back
               </button>
-              <button type='submit' id='calc' onClick={(e) => handleSubmit(e)}>
+              <button type='submit' id='calc'>
                 <Link to='/userdashboardcar/user-dasboard-car.js'>Next</Link>
               </button>
             </div>

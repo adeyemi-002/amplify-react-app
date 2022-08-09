@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './userdashboard-train.css'
 import axios from 'axios'
+import IconsNav from '../IconsNav'
 
 function TrainDashboard() {
   const navigate = useNavigate()
@@ -52,6 +53,7 @@ function TrainDashboard() {
     const name = event.target.name
     const value = event.target.value
     setTrainData((values) => ({ ...values, [name]: value }))
+    localStorage.setItem('trainData', JSON.stringify({ [name]: value || 0 }))
   }
 
   useEffect(() => {
@@ -69,16 +71,10 @@ function TrainDashboard() {
   return (
     <div className='Reg'>
       <div id='usertraindash'>
-        <div id='icons'>
-          <i className='fa fa-home iconcolor fsizetd'></i>
-          <i className='fa fa-car iconcolor fsizet'></i>
-          <i className='fa fa-bus iconcolor fsizet'></i>
-          <i className='fa fa-plane iconcolore fsizet'></i>
-          <i className='fa fa-train active iconcolor fsizet'></i>
-        </div>
+        <IconsNav active='train' />
 
         <div id='datareg'>
-          <form action='' onSubmit={handleSubmit} id='powerdata'>
+          <form action='' id='powerdata'>
             <div className='details'>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <label htmlFor='wood' className=''>
@@ -103,11 +99,8 @@ function TrainDashboard() {
               <button type='reset' id='reset'>
                 Cancel
               </button>
-              <button type='submit' id='calc' onClick={() => handleBack()}>
+              <button type='submit' id='calc'>
                 Back
-              </button>
-              <button type='submit' id='calc' onClick={(e) => handleSubmit(e)}>
-                Calculate footprint
               </button>
             </div>
           </form>

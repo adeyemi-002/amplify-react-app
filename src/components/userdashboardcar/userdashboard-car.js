@@ -1,21 +1,25 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './userdashboard-car.css'
+import IconsNav from '../IconsNav'
 
 function CarDashboard() {
   const navigate = useNavigate()
   const [carData, setCarData] = useState({})
 
-  function handleSubmit(event) {
+  {
+    /*function handleSubmit(event) {
     event.preventDefault()
     localStorage.setItem('carData', JSON.stringify(carData))
     console.log(carData)
+  }*/
   }
 
   function handleChange(event) {
     const name = event.target.name
     const value = event.target.value
     setCarData((values) => ({ ...values, [name]: value }))
+    localStorage.setItem('carData', JSON.stringify({ [name]: value || 0 }))
   }
 
   function handleBack() {
@@ -33,16 +37,10 @@ function CarDashboard() {
   return (
     <div className='Usrc'>
       <div id='usercardash'>
-        <div id='icons'>
-          <i className='fa fa-home iconcolor fsizech'></i>
-          <i className='fa fa-car active iconcolor fsizec'></i>
-          <i className='fa fa-bus iconcolor fsizec'></i>
-          <i className='fa fa-plane iconcolo fsizecr'></i>
-          <i className='fa fa-train iconcolor fsizec'></i>
-        </div>
+        <IconsNav active='car' />
 
         <div id='datareg'>
-          <form action='' onSubmit={handleSubmit} id='powerdata'>
+          <form action='' id='powerdata'>
             <div id='detailsbtnml'>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <label htmlFor='elect' className=''>
@@ -68,7 +66,7 @@ function CarDashboard() {
               <button type='submit' id='calc' onClick={() => handleBack()}>
                 Back
               </button>
-              <button type='submit' id='calc' onClick={(e) => handleSubmit(e)}>
+              <button type='submit' id='calc'>
                 <Link to='/userdashboardhouse/user-dasboard-house.js'>
                   Next
                 </Link>

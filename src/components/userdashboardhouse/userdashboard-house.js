@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './userdashboard-house.css'
+import IconsNav from '../IconsNav'
 
 function HouseDashboard() {
   const navigate = useNavigate()
@@ -14,16 +15,19 @@ function HouseDashboard() {
     }
   }, [])
 
-  function handleSubmit(event) {
+  {
+    /*function handleSubmit(event) {
     event.preventDefault()
     localStorage.setItem('houseData', JSON.stringify(houseData))
     console.log(houseData)
+  }*/
   }
 
   function handleChange(event) {
     const name = event.target.name
     const value = event.target.value
     setHouseData((values) => ({ ...values, [name]: value }))
+    localStorage.setItem('houseData', JSON.stringify({ [name]: value || 0 }))
   }
 
   function handleBack(event) {
@@ -34,16 +38,9 @@ function HouseDashboard() {
   return (
     <div className='Reg'>
       <div id='userhousedash'>
-        <div id='icons'>
-          <i className='fa fa-home active iconcolor fsizehh'></i>
-          <i className='fa fa-car iconcolor fsizeh'></i>
-          <i className='fa fa-bus iconcolor fsizeh'></i>
-          <i className='fa fa-plane iconcolore fsizeh'></i>
-          <i className='fa fa-train iconcolor fsizeh'></i>
-        </div>
-
+        <IconsNav active='house' />
         <div id='datareg'>
-          <form action='' onSubmit={handleSubmit} id='powerdata'>
+          <form action='' id='powerdata'>
             <div id='elect'>
               <label htmlFor='item' className=''>
                 Electricity:
@@ -82,7 +79,7 @@ function HouseDashboard() {
               <button type='submit' id='calc' onClick={() => handleBack()}>
                 Back
               </button>
-              <button type='submit' id='calc' onClick={(e) => handleSubmit(e)}>
+              <button type='submit' id='calc'>
                 <Link to='/userdashboardtrain/user-dasboard-train.js'>
                   Next
                 </Link>
