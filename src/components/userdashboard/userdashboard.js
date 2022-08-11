@@ -66,6 +66,8 @@ function UserDashboard() {
   function handleDelete(d) {
     const url = `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/deletefootprint/${d}`
 
+    console.log(url, 'URL')
+
     axios
       .delete(url, {
         headers: {
