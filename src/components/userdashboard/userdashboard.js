@@ -67,7 +67,16 @@ function UserDashboard() {
     const url = `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/deletefootprint/{d.week.S}`
 
     axios
-      .delete(url)
+      .delete(url, {
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Headers':
+            'Access-Control-Allow-Headers, Content-Type, Authorization',
+          'Access-Control-Allow-Methods': '*',
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token || localStorage.getItem('id_token')}`,
+        },
+      })
       .then((res) => {
         console.log(res)
         window.alert('deleted')
