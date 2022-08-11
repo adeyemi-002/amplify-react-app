@@ -64,7 +64,7 @@ function UserDashboard() {
   }, [])
 
   function handleDelete(d) {
-    const url = `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/deletefootprint/${d.week.S}`
+    const url = `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/deletefootprint/${d}`
 
     axios
       .delete(url, {
@@ -102,7 +102,7 @@ function UserDashboard() {
           <i
             class='fa fa-trash'
             aria-hidden='true'
-            onClick={(d) => handleDelete(d)}
+            onClick={(d) => handleDelete(d.week.S)}
           />
         </td>
       </tr>
