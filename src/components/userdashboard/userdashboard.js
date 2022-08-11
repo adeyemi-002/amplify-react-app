@@ -105,7 +105,7 @@ function UserDashboard() {
           <i
             class='fa fa-trash'
             aria-hidden='true'
-            onClick={(d) => handleDelete(d.week.S)}
+            onClick={() => handleDelete(d.week.S)}
           />
         </td>
       </tr>
