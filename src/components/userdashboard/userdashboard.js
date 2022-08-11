@@ -30,38 +30,52 @@ function UserDashboard() {
 
     console.log('tok', token)
     setLoading(true)
-    {
-      axios
-        .get(
-          `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/getallfootprints`,
-          {
-            headers: {
-              'Access-Control-Allow-Origin': '*',
-              'Access-Control-Allow-Headers':
-                'Access-Control-Allow-Headers, Content-Type, Authorization',
-              'Access-Control-Allow-Methods': '*',
-              'Content-Type': 'application/json',
-              Authorization: `Bearer ${
-                token || localStorage.getItem('id_token')
-              }`,
-            },
-          }
-        )
-        .then((response) => {
-          console.log(response)
-          setData(response.data)
-          setLoading(false)
-        })
-        .catch((err) => {
-          console.error(err)
-          setLoading(false)
-        })
-    }
+
+    axios
+      .get(
+        `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/getallfootprints`,
+        {
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Headers':
+              'Access-Control-Allow-Headers, Content-Type, Authorization',
+            'Access-Control-Allow-Methods': '*',
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${
+              token || localStorage.getItem('id_token')
+            }`,
+          },
+        }
+      )
+      .then((response) => {
+        console.log(response)
+        setData(response.data)
+        setLoading(false)
+      })
+      .catch((err) => {
+        console.error(err)
+        setLoading(false)
+      })
+
     // console.log(hash);
     // console.log(token);
 
     //    setIsTenantAdmin(true);
   }, [])
+
+  function handleDelete(d) {
+    const url = `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/deletefootprint/{d.week.S}`
+
+    axios
+      .delete(url)
+      .then((res) => {
+        console.log(res)
+        window.alert('deleted')
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
 
   const tableBody = data?.map((d) =>
     loading ? (
@@ -75,6 +89,13 @@ function UserDashboard() {
         <td>{d.house.S}</td>
         <td>{d.train.S}</td>
         <td>{d.totalFootprint.S}</td>
+        <td>
+          <i
+            class='fa fa-trash'
+            aria-hidden='true'
+            onClick={(d) => handleDelete(d)}
+          />
+        </td>
       </tr>
     )
   )
@@ -100,6 +121,7 @@ function UserDashboard() {
                 <th>House</th>
                 <th>Train</th>
                 <th>TotalFootprint</th>
+                <th></th>
               </tr>
             </thead>
             <tbody>
@@ -126,7 +148,7 @@ function UserDashboard() {
 
         <button>
           {' '}
-          <Link to='/userdashboardairplane/user-dasboard-airplane.js'>
+          <Link to='/userdashboardhouse/user-dasboard-house.js'>
             Input Data
           </Link>
         </button>

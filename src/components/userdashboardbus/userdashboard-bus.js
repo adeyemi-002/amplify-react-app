@@ -5,7 +5,7 @@ import IconsNav from '../IconsNav'
 
 function BusDashboard() {
   const navigate = useNavigate()
-  const [busData, setBusData] = useState({})
+  const [busData, setBusData] = useState()
 
   useEffect(() => {
     const busData = JSON.parse(localStorage?.getItem('busData'))
@@ -28,8 +28,9 @@ function BusDashboard() {
   function handleChange(event) {
     const name = event.target.name
     const value = event.target.value
-    setBusData((values) => ({ ...values, [name]: value }))
-    localStorage.setItem('busData', JSON.stringify({ [name]: value || 0 }))
+    //setBusData((values) => ({ ...values, [name]: value }))
+    setBusData(value)
+    localStorage.setItem('busData', JSON.stringify(value || 0))
   }
 
   return (
@@ -47,7 +48,7 @@ function BusDashboard() {
               <input
                 type='text'
                 name='item'
-                value={busData.item || ''}
+                value={busData}
                 onChange={handleChange}
                 className='form-elect-input'
               />

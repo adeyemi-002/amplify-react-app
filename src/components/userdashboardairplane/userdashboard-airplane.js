@@ -5,12 +5,13 @@ import IconsNav from '../IconsNav'
 
 function AirplaneDashboard() {
   const navigate = useNavigate()
-  const [airplaneData, setAirplaneData] = useState({})
+  const [airplaneData, setAirplaneData] = useState()
 
   useEffect(() => {
     const airplaneData = JSON.parse(localStorage?.getItem('airplaneData'))
     console.log('td', airplaneData)
     if (airplaneData) {
+      console.log('air', airplaneData)
       setAirplaneData(airplaneData)
     }
   }, [])
@@ -23,10 +24,12 @@ function AirplaneDashboard() {
   }
 
   function handleChange(event) {
+    console.log('fire')
     const name = event.target.name
     const value = event.target.value
-    setAirplaneData((values) => ({ ...values, [name]: value }))
-    localStorage.setItem('airplaneData', JSON.stringify({ [name]: value || 0 }))
+    //setAirplaneData((values) => ({ ...values, [name]: value }))
+    setAirplaneData(value)
+    localStorage.setItem('airplaneData', JSON.stringify(value || 0))
   }
   return (
     <div id='userplanedash'>
@@ -44,7 +47,7 @@ function AirplaneDashboard() {
             <input
               type='number'
               name='item'
-              value={airplaneData.item || ''}
+              value={airplaneData}
               onChange={handleChange}
               className='form-input'
             />

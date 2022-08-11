@@ -5,7 +5,7 @@ import IconsNav from '../IconsNav'
 
 function HouseDashboard() {
   const navigate = useNavigate()
-  const [houseData, setHouseData] = useState({})
+  const [houseData, setHouseData] = useState()
 
   useEffect(() => {
     const houseData = JSON.parse(localStorage?.getItem('houseData'))
@@ -26,8 +26,9 @@ function HouseDashboard() {
   function handleChange(event) {
     const name = event.target.name
     const value = event.target.value
-    setHouseData((values) => ({ ...values, [name]: value }))
-    localStorage.setItem('houseData', JSON.stringify({ [name]: value || 0 }))
+    //setHouseData((values) => ({ ...values, [name]: value }))
+    setHouseData(value)
+    localStorage.setItem('houseData', JSON.stringify(value || 0))
   }
 
   function handleBack(event) {
@@ -49,7 +50,7 @@ function HouseDashboard() {
               <input
                 type='number'
                 name='item'
-                value={houseData.item || ''}
+                value={houseData}
                 onChange={handleChange}
                 className='form-elect-input'
               />

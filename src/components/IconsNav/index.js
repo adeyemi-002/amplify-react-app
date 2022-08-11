@@ -1,56 +1,60 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-function handleSubmit(event) {
-  event.preventDefault()
-  //localStorage.setItem('trainData', JSON.stringify(trainData))
-
-  const travelData = {
-    flight: JSON.parse(localStorage?.getItem('airplaneData')),
-    bus: JSON.parse(localStorage?.getItem('busData')),
-    car: JSON.parse(localStorage?.getItem('carData')),
-    house: JSON.parse(localStorage?.getItem('houseData')),
-    train: JSON.parse(localStorage?.getItem('trainData')),
-    week: JSON.parse(localStorage?.getItem('week')),
-  }
-  console.log(travelData)
-
-  try {
-    axios
-      .post(
-        `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/createfootprint`,
-        travelData,
-        {
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers':
-              'Access-Control-Allow-Headers, Content-Type, Authorization',
-            'Access-Control-Allow-Methods': '*',
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${localStorage.getItem('id_token')}`,
-          },
-        }
-      )
-      .then((response) => {
-        console.log(response)
-      })
-      .catch((err) => {
-        console.error(err)
-      })
-      .finally(() => {
-        localStorage?.setItem('airplaneData')
-        localStorage?.setItem('busData')
-        localStorage?.setItem('carData')
-        localStorage?.setItem('houseData')
-        localStorage?.setItem('trainData')
-        localStorage?.setItem('week')
-      })
-  } catch (error) {
-    console.error(error)
-  }
-}
-
 const IconsNav = ({ active }) => {
+  const navigate = useNavigate()
+
+  function handleSubmit(event) {
+    event.preventDefault()
+
+    //localStorage.setItem('trainData', JSON.stringify(trainData))
+
+    const travelData = {
+      flight: JSON.parse(localStorage?.getItem('airplaneData')) ?? '0',
+      bus: JSON.parse(localStorage?.getItem('busData')) ?? '0',
+      car: JSON.parse(localStorage?.getItem('carData')) ?? '0',
+      house: JSON.parse(localStorage?.getItem('houseData')) ?? '0',
+      train: JSON.parse(localStorage?.getItem('trainData')) ?? '0',
+      week: JSON.parse(localStorage?.getItem('week')) ?? '0',
+    }
+    console.log(travelData)
+
+    try {
+      axios
+        .post(
+          `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/user/createfootprint`,
+          travelData,
+          {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Headers':
+                'Access-Control-Allow-Headers, Content-Type, Authorization',
+              'Access-Control-Allow-Methods': '*',
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${localStorage.getItem('id_token')}`,
+            },
+          }
+        )
+        .then((response) => {
+          console.log(response)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+        .finally(() => {
+          localStorage?.removeItem('airplaneData')
+          localStorage?.removeItem('busData')
+          localStorage?.removeItem('carData')
+          localStorage?.removeItem('houseData')
+          localStorage?.removeItem('trainData')
+          localStorage?.removeItem('week')
+          navigate('/userdashboard/user-dashboard.js')
+        })
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   return (
     <div>
       <div id='icons'>

@@ -6,7 +6,7 @@ import IconsNav from '../IconsNav'
 
 function TrainDashboard() {
   const navigate = useNavigate()
-  const [trainData, setTrainData] = useState({})
+  const [trainData, setTrainData] = useState()
 
   {
     /*function handleSubmit(event) {
@@ -54,8 +54,9 @@ function TrainDashboard() {
   function handleChange(event) {
     const name = event.target.name
     const value = event.target.value
-    setTrainData((values) => ({ ...values, [name]: value }))
-    localStorage.setItem('trainData', JSON.stringify({ [name]: value || 0 }))
+    //setTrainData((values) => ({ ...values, [name]: value }))
+    setTrainData(value)
+    localStorage.setItem('trainData', JSON.stringify(value || 0))
   }
 
   useEffect(() => {
@@ -86,7 +87,7 @@ function TrainDashboard() {
               <input
                 type='number'
                 name='item'
-                value={trainData.item || ''}
+                value={trainData}
                 onChange={handleChange}
                 className='form-input'
               />

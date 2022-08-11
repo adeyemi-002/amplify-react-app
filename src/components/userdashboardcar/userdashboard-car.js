@@ -5,7 +5,7 @@ import IconsNav from '../IconsNav'
 
 function CarDashboard() {
   const navigate = useNavigate()
-  const [carData, setCarData] = useState({})
+  const [carData, setCarData] = useState()
 
   {
     /*function handleSubmit(event) {
@@ -18,8 +18,9 @@ function CarDashboard() {
   function handleChange(event) {
     const name = event.target.name
     const value = event.target.value
-    setCarData((values) => ({ ...values, [name]: value }))
-    localStorage.setItem('carData', JSON.stringify({ [name]: value || 0 }))
+    //setCarData((values) => ({ ...values, [name]: value }))
+    setCarData(value)
+    localStorage.setItem('carData', JSON.stringify(value || 0))
   }
 
   function handleBack() {
@@ -50,7 +51,7 @@ function CarDashboard() {
               <input
                 type='number'
                 name='item'
-                value={carData.item || ''}
+                value={carData}
                 onChange={handleChange}
                 className='form-elect-input'
               />
