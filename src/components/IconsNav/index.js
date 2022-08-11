@@ -38,12 +38,12 @@ function handleSubmit(event) {
         console.error(err)
       })
       .finally(() => {
-        localStorage?.setItem('airplaneData', 0)
-        localStorage?.setItem('busData', 0)
-        localStorage?.setItem('carData', 0)
-        localStorage?.setItem('houseData', 0)
-        localStorage?.setItem('trainData', 0)
-        localStorage?.setItem('week', 0)
+        localStorage?.setItem('airplaneData')
+        localStorage?.setItem('busData')
+        localStorage?.setItem('carData')
+        localStorage?.setItem('houseData')
+        localStorage?.setItem('trainData')
+        localStorage?.setItem('week')
       })
   } catch (error) {
     console.error(error)
