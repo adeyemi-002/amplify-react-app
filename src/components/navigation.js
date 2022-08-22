@@ -36,9 +36,9 @@ function Navigation() {
               <Link to='/home/home.js' className='pages'>
                 Home
               </Link>
-              <Link to='/registration/registration.js' className='pages'>
+              {/*<Link to='/registration/registration.js' className='pages'>
                 Registration
-              </Link>
+              </Link>*/}
             </div>
           )}
 
