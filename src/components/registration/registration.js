@@ -39,8 +39,7 @@ function RegistrationForm() {
                 },
               }
             )
-            .then(function (response) {
-              console.log(response)
+            .then(() => {
               window.alert(
                 'Registration successful, check email for login details!'
               )
