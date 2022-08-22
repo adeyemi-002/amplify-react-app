@@ -26,6 +26,8 @@ function UserDashboard() {
     if (match) {
       token = match[0]
       localStorage.setItem('id_token', token)
+      navigate('/userdashboard/user-dashboard.js')
+      window.location.reload()
     }
 
     console.log('tok', token)
