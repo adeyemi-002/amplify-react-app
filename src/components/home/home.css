@@ -1,77 +1,84 @@
 #nav-link {
- color: #fff;
- margin-right: 30px;
- text-decoration: none;
+  color: #fff;
+  margin-right: 30px;
+  text-decoration: none;
+}
+.top .header1 {
+  font-size: 2rem !important;
 }
 
 .topiconcolor {
- padding: 5px;
- border-radius: 25px;
- color: rgb(156, 235, 233);
- background-color: #fff;
+  padding: 5px;
+  border-radius: 25px;
+  color: rgb(252, 0, 0);
+  background-color: #fff;
 }
 
 .topsection {
- display: flex;
- text-align: center;
- align-items: center;
+  display: flex;
+  text-align: center;
+  align-items: center;
 }
 
 .topfeature {
- text-align: left;
- margin-left: 10px;
+  text-align: left;
+  margin-left: 10px;
 }
 
 #midnav {
- background-color: #fff;
- text-align: center;
- padding: 80px;
- width: 100%;
+  background-image: url('../images/trees.jpg');
+  background-size: 50% 100%;
+
+  background-color: #fff;
+  text-align: center;
+  padding: 80px;
+  width: 100%;
 }
 
 .text {
- font-size: medium;
+  font-size: medium;
+  color: #fff;
 }
 
 #register {
- background-color: rgb(140, 140, 235);
- color: #fff;
- width: 100px;
- padding: 10px;
- border: none;
- border-radius: 5px;
+  background-color: rgb(140, 140, 235);
+  color: #fff;
+  width: 100px;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
 }
 
 #footer {
- display: flex;
- flex-direction: row;
- text-align: center;
- align-items: center;
- justify-content: space-around;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  justify-content: space-around;
 }
 
 #leftfooter {
- display: flex;
- flex-direction: row;
- text-align: left;
+  display: flex;
+  flex-direction: row;
+  text-align: left;
 }
 
 #rightfooter {
- display: flex;
- flex-direction: row;
- text-align: right;
+  display: flex;
+  flex-direction: row;
+  text-align: right;
 }
 
 .info {
- color: #000;
- text-decoration: none;
- margin-right: 7px;
+  color: #000;
+  text-decoration: none;
+  margin-right: 7px;
 }
 
 .iconcolor {
- margin: 10px;
- padding: 5px;
- border-radius: 25px;
- color: rgb(204, 218, 204);
- background-color: rgb(125, 137, 125);
+  margin: 10px;
+  padding: 5px;
+  border-radius: 25px;
+  color: rgb(204, 218, 204);
+  background-color: rgb(125, 137, 125);
 }

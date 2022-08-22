@@ -1,8 +1,19 @@
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { useState, useEffect } from 'react'
 
 const IconsNav = ({ active }) => {
   const navigate = useNavigate()
+
+  const [isDashboard, setIsDashboard] = useState()
+
+  useEffect(() => {
+    const path = window.location.href
+    console.log('path', path)
+    const isDashboard = path.includes('user-dashboard.js')
+    if (isDashboard) setIsDashboard(true)
+    console.log('istrue', isDashboard)
+  }, [])
 
   function handleSubmit(event) {
     event.preventDefault()
@@ -97,7 +108,11 @@ const IconsNav = ({ active }) => {
           />
         </Link>
       </div>
-      <button onClick={(e) => handleSubmit(e)}>Submit</button>
+      {isDashboard ? (
+        <div></div>
+      ) : (
+        <button onClick={(e) => handleSubmit(e)}>Submit</button>
+      )}
     </div>
   )
 }

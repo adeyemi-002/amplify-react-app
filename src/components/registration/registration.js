@@ -41,6 +41,9 @@ function RegistrationForm() {
             )
             .then(function (response) {
               console.log(response)
+              window.alert(
+                'Registration successful, check email for login details!'
+              )
             })
             .catch(function (error) {
               console.log(error)

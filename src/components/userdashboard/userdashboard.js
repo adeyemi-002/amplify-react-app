@@ -148,7 +148,7 @@ function UserDashboard() {
           <label htmlFor='week' className=''>
             Week
           </label>
-          &nbsp;
+          &nbsp; (WK-YYYY) &nbsp;
           <input
             type='text'
             name='week'

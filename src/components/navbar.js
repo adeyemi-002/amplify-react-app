@@ -25,6 +25,7 @@ function NavBar() {
     e.preventDefault()
     console.log('signed out')
     localStorage.removeItem('loggedIn')
+    navigate('/home/home.js')
   }
 
   return (

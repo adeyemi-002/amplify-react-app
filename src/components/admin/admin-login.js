@@ -165,17 +165,21 @@ function AdminLogin() {
                 initialValues={initialValues}
                 onSubmit={(values, { setSubmitting }) => {
                   console.log(values)
-                  axios.post(
-                    `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/AdminUserManagement/createuser`,
-                    values,
-                    {
-                      headers: {
-                        Authorization: `Bearer ${localStorage.getItem(
-                          'id_token'
-                        )}`,
-                      },
-                    }
-                  )
+                  axios
+                    .post(
+                      `https://gxktmecngi.execute-api.eu-central-1.amazonaws.com/dev/AdminUserManagement/createuser`,
+                      values,
+                      {
+                        headers: {
+                          Authorization: `Bearer ${localStorage.getItem(
+                            'id_token'
+                          )}`,
+                        },
+                      }
+                    )
+                    .then(() => {
+                      window.alert('new user created, sign in details sent!')
+                    })
                   setTimeout(() => {
                     // alert(JSON.stringify(values, null, 2));
                     setSubmitting(false)
